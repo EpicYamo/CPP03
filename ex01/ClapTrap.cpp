@@ -6,16 +6,28 @@
 /*   By: aaycan <aaycan@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 06:33:24 by aaycan            #+#    #+#             */
-/*   Updated: 2026/04/01 20:42:21 by aaycan           ###   ########.fr       */
+/*   Updated: 2026/04/01 20:27:54 by aaycan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include <iostream>
 
-ClapTrap::ClapTrap() : _name("Default"), _hit_points(10), _energy_points(10), _attack_damage(0)
+ClapTrap::ClapTrap() : _name("NoName"), _hit_points(10), _energy_points(10), _attack_damage(0)
 {
 	std::cout << "ClapTrap Default constructor called" << std::endl;
+}
+
+ClapTrap::ClapTrap(unsigned int hp, unsigned int ep, unsigned int ad)
+	: _name("NoName"), _hit_points(hp), _energy_points(ep), _attack_damage(ad)
+{
+    std::cout << "ClapTrap Protected Default constructor called" << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string name, unsigned int hp, unsigned int ep, unsigned int ad) 
+	: _name(name), _hit_points(hp), _energy_points(ep), _attack_damage(ad)
+{
+    std::cout << "ClapTrap Protected Name constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hit_points(10), _energy_points(10), _attack_damage(0)
@@ -82,5 +94,5 @@ void ClapTrap::beRepaired(unsigned int amount)
 		this->_energy_points -= 1;
 	}
 	else
-		std::cout << this->_name << ": no energy left to glue myself back together." << std::endl;
+		std::cout << this->_name << ": No energy left to glue myself back together." << std::endl;
 }

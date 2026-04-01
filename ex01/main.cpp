@@ -6,53 +6,59 @@
 /*   By: aaycan <aaycan@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 06:33:27 by aaycan            #+#    #+#             */
-/*   Updated: 2026/04/01 20:41:06 by aaycan           ###   ########.fr       */
+/*   Updated: 2026/04/01 20:33:48 by aaycan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 #include <iostream>
 
 int main()
 {
-	std::cout << "--- ORTHODOX CANONICAL FORM TEST ---" << std::endl;
-	ClapTrap original("Original");
-	ClapTrap copy(original);
-	ClapTrap assigned;
+	std::cout << "--- CHAINING TEST ---" << std::endl;
+	{
+		ScavTrap tmp("TempRobot");
+	}
+	std::cout << "\n--- ORTHODOX CANONICAL FORM TEST ---" << std::endl;
+	ScavTrap original("Original");
+	original.guardGate();
+	ScavTrap copy(original);
+	ScavTrap assigned;
 	assigned = original;
 	std::cout << std::endl;
 
 	std::cout << "--- BATTLE COMMENCES ---" << std::endl;
-	ClapTrap trapA("Rusty");
-	ClapTrap trapB("Shiny");
+	ClapTrap clap("Clappy");
+	ScavTrap scav("Scavvy");
 	std::cout << std::endl;
 
-	trapA.attack("Shiny");
-	trapB.takeDamage(5);
-	std::cout << std::endl;
-	trapB.beRepaired(3);
+	scav.attack("Clappy");
+	clap.takeDamage(20);
 	std::cout << std::endl;
 
-	trapA.attack("Shiny");
-	trapB.takeDamage(10);
+	scav.guardGate();
+	scav.guardGate();
 	std::cout << std::endl;
 
-	trapB.takeDamage(2);
-	std::cout << std::endl;
-
-	trapB.attack("Rusty");
-	trapB.beRepaired(5);
+	std::cout << "--- REPAIR TEST ---" << std::endl;
+	scav.takeDamage(30);
+	scav.beRepaired(15);
 	std::cout << std::endl;
 
 	std::cout << "--- EXHAUSTION TEST ---" << std::endl;
-	for (int i = 0; i < 8; i++)
-		trapA.attack("Shiny");
+	for (int i = 0; i < 48; i++)
+		scav.attack("Target");
+
+	scav.attack("Target");
 	std::cout << std::endl;
-	trapA.attack("Shiny");
-	trapA.beRepaired(5);
+
+	std::cout << "--- DEATH TEST ---" << std::endl;
+	scav.takeDamage(100);
+	scav.attack("Clappy");
+	scav.beRepaired(20);
 
 	std::cout << std::endl;
 	std::cout << "--- BATTLE ENDS ---" << std::endl;
-    
+
 	return (0);
 }
