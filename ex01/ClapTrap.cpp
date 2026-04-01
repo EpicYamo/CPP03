@@ -6,7 +6,7 @@
 /*   By: aaycan <aaycan@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 06:33:24 by aaycan            #+#    #+#             */
-/*   Updated: 2026/04/01 20:27:54 by aaycan           ###   ########.fr       */
+/*   Updated: 2026/04/01 20:52:38 by aaycan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,20 @@ ClapTrap::~ClapTrap()
 void ClapTrap::attack(const std::string &target)
 {
 	if (this->_hit_points == 0)
-		std::cout << "ClapTrap " << this->_name << " has flatlined! It is now nothing but battlefield debris..." << std::endl;
+		std::cout << this->_name << ": has already flatlined, it cannot perform an attack! It is now nothing but battlefield debris..." << std::endl;
 	else if (this->_energy_points > 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << _attack_damage << " points of damage!" << std::endl;
+		std::cout << this->_name << ": attacks " << target << ", causing " << _attack_damage << " points of damage!" << std::endl;
 		this->_energy_points -= 1;
 	}
 	else
-		std::cout << "ClapTrap " << this->_name << " is Out of juice! Low battery warning! Action aborted." << std::endl;
+		std::cout << this->_name << ": is Out of juice! Low battery warning! Action aborted." << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_hit_points == 0 && amount != 0)
-		std::cout << this->_name << " You can't break what's already broken!" << std::endl;
+		std::cout << this->_name << ": is already broken and is now nothing but battlefield debris...!" << std::endl;
 	else
 	{
 		std::cout << this->_name << ": took " << amount << " points of damage! That beautiful metal chassis is ruined!" << std::endl;
@@ -86,7 +86,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_hit_points == 0)
-		std::cout << this->_name << " is already dead, there is no hope left for this pile of scrap..." << std::endl;
+		std::cout << this->_name << ": is already dead, there is no hope left for this pile of scrap..." << std::endl;
 	else if (this->_energy_points > 0)
 	{
 		std::cout << "Slapped some duct tape on! " << this->_name << " recovered " << amount << " hit points!" << std::endl;

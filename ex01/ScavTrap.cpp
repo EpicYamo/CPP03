@@ -6,7 +6,7 @@
 /*   By: aaycan <aaycan@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 19:10:43 by aaycan            #+#    #+#             */
-/*   Updated: 2026/04/01 20:15:11 by aaycan           ###   ########.fr       */
+/*   Updated: 2026/04/01 20:45:47 by aaycan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ ScavTrap::~ScavTrap()
 void ScavTrap::attack(const std::string &target)
 {
 	if (this->_hit_points == 0)
-		std::cout << "ScavTrap " << this->_name << " already lost its life in the battle. Wish it gets reincarnated in Futurama..." << std::endl;
+		std::cout << "ScavTrap " << this->_name << " already lost its life in the battle and cannot perform an attack." << std::endl;
 	else if (this->_energy_points > 0)
 	{
 		std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attack_damage << " points of damage to its enemy!" << std::endl;
