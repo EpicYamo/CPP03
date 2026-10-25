@@ -1,0 +1,4 @@
+*.o
+ex00/claptrap_test
+ex01/scavtrap_test
+ex02/fragtrap_test
